@@ -1,4 +1,6 @@
-# kafka
+# Puppet Kafka
+
+[![Build Status](https://travis-ci.org/intelliad-media/puppet-kafka.svg?branch=master)](https://travis-ci.org/intelliad-media/puppet-kafka)
 
 #### Table of Contents
 
