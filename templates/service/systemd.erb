@@ -1,0 +1,29 @@
+# Note: This file is managed by Puppet.
+# Author: Richard Hillmann <rhillmann@intelliad.de>
+[Unit]
+Description=Kafka Daemon starter for kafka-run-class.sh
+After=network.target
+
+[Service]
+#This environemnt variables are used by kafka-run-class wrapper
+<%- @environment.sort.each do |k,v|
+    if v.to_s.strip.length != 0 -%>
+Environment=<%= k %>="<%= v %>"
+<%- end
+end
+-%>
+
+User=<%= scope.lookupvar("kafka::user") %>
+
+Type=simple
+KillMode=mixed
+Restart=always
+TimeoutStopSec=300
+StandardOutput=syslog
+StandardError=inherit
+
+LimitNOFILE=65535
+LimitCORE=infinity
+LimitSTACK=infinity
+
+ExecStart=<%= @kafka_target %>/bin/kafka-run-class.sh -name "<%= @name %>" "<%= @classname %>" <%= @options %>
