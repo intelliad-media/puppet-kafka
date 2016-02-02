@@ -145,7 +145,7 @@ define kafka::mirror (
     fail('New consumer is only available at kafka 0.9.0.0 and above')
   }
 
-  $kafka_target = "${::kafka::package_dir}/${this_scala_version}-${this_version}"
+  $kafka_target = "${::kafka::package_dir}/kafka_${this_scala_version}-${this_version}"
   $service_name = $name
 
   $notify = $this_service_restart ? {

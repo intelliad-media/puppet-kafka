@@ -36,7 +36,7 @@ describe 'kafka::broker', :type => :class do
     end
 
     it do
-      should contain_kafka__install('/var/lib/kafka/2.9-0.8.2.1').with(
+      should contain_kafka__install('/var/lib/kafka/kafka_2.9-0.8.2.1').with(
         'version'       => '0.8.2.1',
         'scala_version' => '2.9',
         'kafka_source'  => 'http://domain.com/archive.tgz',

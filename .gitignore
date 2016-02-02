@@ -6,3 +6,5 @@ Gemfile.lock
 spec/fixtures
 pkg/
 vendor/
+log/
+junit/

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 kafka_version = '0.9.0.0'
 scala_version = '2.11'
-kafka_target = "#{scala_version}-#{kafka_version}"
+kafka_target = "kafka_#{scala_version}-#{kafka_version}"
 
 describe 'kafka::install', :type => :define do
   context 'Install Kafka with archive' do
@@ -14,8 +14,8 @@ describe 'kafka::install', :type => :define do
       }
     end
     it do
-      should contain_archive("/tmp/kafka_#{kafka_target}.tgz").with(
-        'source'       => "http://www.eu.apache.org/dist/kafka/#{kafka_version}/kafka_#{kafka_target}.tgz",
+      should contain_archive("/tmp/#{kafka_target}.tgz").with(
+        'source'       => "http://www.eu.apache.org/dist/kafka/#{kafka_version}/#{kafka_target}.tgz",
         'extract'      => true,
         'extract_path' => '/var/lib/kafka',
         'creates'      => "/var/lib/kafka/#{kafka_target}",
@@ -35,7 +35,7 @@ describe 'kafka::install', :type => :define do
       }
     end
     it do
-      should contain_archive("/tmp/kafka_#{kafka_target}.tgz").with(
+      should contain_archive("/tmp/#{kafka_target}.tgz").with(
         'source' => 'http://domain.com/archive.tgz',
       )
     end

@@ -83,7 +83,7 @@ class kafka::broker(
     fail('You are going to remove kafka while kafka broker should be still present')
   }
 
-  $kafka_target = "${::kafka::package_dir}/${this_scala_version}-${this_version}"
+  $kafka_target = "${::kafka::package_dir}/kafka_${this_scala_version}-${this_version}"
   $service_name = 'server'
 
   $notify = $this_service_restart ? {
