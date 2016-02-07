@@ -4,6 +4,9 @@
 Description=Kafka Daemon starter for kafka-run-class.sh
 After=network.target
 
+[Install]
+WantedBy=multi-user.target
+
 [Service]
 #This environemnt variables are used by kafka-run-class wrapper
 <%- @environment.sort.each do |k,v|
