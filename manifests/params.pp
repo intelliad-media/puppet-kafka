@@ -30,8 +30,19 @@ class kafka::params {
   # restart on configuration change?
   $service_restart = true
 
-  # determine default service provider by stdlib fact
-  $service_provider = $::service_provider
+  case $::osfamily {
+    'Ubuntu': {
+      if versioncmp( $::lsbmajdistrelease, '15') >= 0 {
+        $service_provider = 'systemd'
+      } else {
+        $service_provider = 'upstart'
+      }
+    }
+    default: {
+      # determine default service provider by stdlib fact
+      $service_provider = $::service_provider
+    }
+  }
 
   $service_provider_dir = {
     'upstart' => '/etc/init',
