@@ -11,7 +11,7 @@ WantedBy=multi-user.target
 #This environemnt variables are used by kafka-run-class wrapper
 <%- @environment.sort.each do |k,v|
     if v.to_s.strip.length != 0 -%>
-Environment=<%= k %>="<%= v %>"
+Environment="<%= k %>=<%= v %>"
 <%- end
 end
 -%>
